@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald|Raleway&display=swap");
+h1,h2,h3,h4,h5,h6,p{
+    font-family: 'Oswald', sans-serif;
+  }
+.navbar-menu{
+    overflow: hidden;
+    background-color: #7f7f7f;
+}
+.navbar-menu ul {
+    padding-left: 0;
+    margin-top: 10px;
+    margin-left: 0;
+    text-align: left;
+  }
+  
+  .navbar-menu li {
+  display: inline;
+  padding: 1em;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  transition: ease 0.3s all;
+}
+.navbar-menu li a:link,.navbar-menu li a:visited{
+  color: white;
+    text-decoration: none;
+}
+.navbar-menu li:hover{
+  background: rgba(136,203,171);
+  text-decoration: none;
+}
+  
+body {
+    background: rgba(136,203,171,1);
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    color: #fff;
+}
+#header-image{
+    background-image: url('../img/app.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 80vh;
+    padding: 20px;
+}
+#header-image h1{
+    text-align: left;
+    margin-top:100px;
+}
+.content{
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid black;
+}
+
+#mobile-section .techs{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#mobile-section .techs img{
+    margin: 10px 10px 10px;
+    padding: 10px 10px 10px ;
+    width: 120px;
+    height: 100px;
+    border: 1px solid black;
+}
+#android-section a:link, a:visited {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #android-section .pics{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#android-section .pics img{
+    margin: 10px 10px 10px;
+    padding: 10px 10px 10px ;
+    width: 120px;
+    height: 100px;
+    border: 1px solid black;
+}
+  #ios-section a:link, a:visited {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  #ios-section .pics{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#ios-section .pics img{
+    margin: 10px 10px 10px;
+    padding: 10px 10px 10px ;
+    width: 120px;
+    height: 100px;
+    border: 1px solid black;
+}
+   footer{
+    background-color: #131622 ;
+    padding: 18px 0;
+    color: white;
+    text-align: center;
+    background: linear-gradient( to top,#b5bfba, #88cbab 100%) ;
+    display:  flex;
+    flex-direction: column;
+    align-items: center;
+  }
+   footer p {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+/* Section Active Styles */
+/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
+section.active {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+section.active::before {
+    opacity: 1;
+    animation: rotate 4s linear 0s infinite forwards;
+}
+
+section.active::after {
+    opacity: 1;
+    animation: rotate 5s linear 0s infinite forwards reverse;
+}
+@keyframes rotate {
+	from {
+		transform: rotate(0deg)
+		           translate(-1em)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-1em) 
+		           rotate(-360deg);
+	}
+}
+/* Resizeing style */
+/* tablets and landscabe*/
+@media (max-width: 1025px){
+  #header-image{
+    background-image: url('../img/app.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 35vh;
+    padding: 20px;
+}
+}
+/* mobiles*/
+@media(max-width: 600px){
+  #header-image{
+    background-image: url('../img/app.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 20vh;
+    padding: 1px;
+ }
+ #header-image h1{
+  font-size: 15px;
+    text-align: left;
+    display: contents
+}
+.content{
+    margin: 0px;
+    padding: 5px;
+    border: 2px solid black;
+}
+section div p{
+  padding-right: 45px;
+ font-size: 15px;
+}
+#mobile-section .techs img {
+  margin: 8px 8px 5px;
+  padding: 10px 10px 9px;
+  width: 60px;
+  height: 57px;
+}
+#android-section .pics img {
+  margin: 8px 8px 5px;
+  padding: 10px 10px 9px;
+  width: 60px;
+  height: 57px;
+}
+#ios-section .pics img {
+  margin: 8px 8px 5px;
+  padding: 10px 10px 9px;
+  width: 60px;
+  height: 57px;
+}
+
+
+}
+
