@@ -5,69 +5,54 @@
 const nav =document.getElementsByClassName('navbar-menu');
 const navList=document.getElementById('navbar-list');
 const sections =document.querySelectorAll('section');
-/**
- * End Global Variables
- * Start Helper Functions
- *
- */
+///* Determining if element is in viewport */ 
+var isInViewport = function (el) {
+	var distance = el.getBoundingClientRect();
+	return (
+		distance.top >= 0 &&
+		distance.left >= 0 &&
+		distance.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+		distance.right <= (window.innerWidth || document.documentElement.clientWidth)
+	);
+}
 // create Nav Elements
 sections.forEach(el => {
     const navlistElements = `<li class='menu_link ${el.className}' data-link=${el.id}><a href="#${el.id}">${el.dataset.nav}</li>`
     navList.insertAdjacentHTML('beforeend', navlistElements)
   })
 
-// create EventListener
+// create EventListener on Navbar items 
 navList.addEventListener('click', event => {
     event.preventDefault()
     const parent = event.target.hasAttribute('data-link') ? event.target : event.target.parentElement
     const elementToScrollTo = document.getElementById(parent.dataset.link)
-    elementToScrollTo.scrollIntoView({ behavior: 'smooth'})
+    window.scroll({top:elementToScrollTo.offsetTop-50,behavior: 'smooth'})
   })
 
-  // Activation 
+  // Activation sections while scrolling 
   window.addEventListener('scroll', function (event)  {
   sections.forEach(el=>{
-      sectionID=document.getElementById(el.id)
-      if(el.classList.contains('active')){
-          el.classList.remove('active')
-      }
-      else{
-        el.classList.add('active')
-      }
-  })})
-
- /* const callback = entries => {
-    entries.forEach(entry => {
-      const navListElement = document.querySelector(`.menu_link[data-link='${entry.target.id}']`)
-      const section = document.getElementById(entry.target.id)
-
-      if (entry && entry.isIntersecting) {
-        navListElement.classList.add('active')
-        section.classList.add('active')
-      } else {
-        if (navListElement.classList.contains('active')) {
-          navListElement.classList.remove('active')
-        }
-  
-        if (section.classList.contains('active')) {
-          section.classList.remove('active')
-        }
-      }
-    })
+    const navLink = document.querySelector( `a[href="#${el.getAttribute("id")}"]`);
+    if(isInViewport(el)){
+        el.classList.add("active")
+        navLink.classList.add("link_active")
   }
-  
-  // Options for the observer. Most important is the threshold
-  const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.6,
+  else {
+    el.classList.remove("active");
+    navLink.classList.remove("link_active");
   }
-  
-  // Setting an observer with options and a callback which checks if the navelement should be active
-  // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
-  const observer = new IntersectionObserver(callback, options)
-  sections.forEach(el => {
-    observer.observe(document.getElementById(el.id))
+})
   })
-  */
+  // Hide and Show Navbar while scrolling 
+  var prevScrollpos = window.pageYOffset;
+  window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+      document.getElementById("navbar").style.top = "0";
+    } else {
+      document.getElementById("navbar").style.top = "-50px";
+    }
+    prevScrollpos = currentScrollPos;
+  }
+
 
